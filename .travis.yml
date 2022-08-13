@@ -8,3 +8,19 @@ before_install:
 
 script:
   - docker run -e CI=true lmachraf/frontend npm run test -- --coverage
+
+deploy:
+  # Preconfigured properties to help deploy to EBS with Travis-CI
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: "frontend-react-app"
+  env: "Frontendreactapp-env"
+  # S3 bucket created by EBS
+  bucket_name: "elasticbeanstalk-us-east-1-914580138132"
+  bucket_path: "frontend-react-app"
+  # AWS Credentials
+  access_key_id: ${AWS_ACCESS_KEY}
+  secret_access_key: ${AWS_SECRET_KEY}
+  # Everytime we push to master, we run deploy job.
+  on:
+    branch: master
