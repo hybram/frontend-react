@@ -24,6 +24,7 @@ FROM node:16-alpine as builder
 # Run Phase
 # tagged with "Run" keyword
 FROM nginx as runner
+    EXPOSE 80
     # Copy files from Build Phase to nginx engine
     COPY --from=builder /home/node/app/build /usr/share/nginx/html
 
