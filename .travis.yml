@@ -21,6 +21,6 @@ deploy:
   # AWS Credentials
   access_key_id: ${AWS_ACCESS_KEY}
   secret_access_key: ${AWS_SECRET_KEY}
-  # Everytime we push to master, we run deploy job.
+  # Deploy on each push to master
   on:
     branch: master
